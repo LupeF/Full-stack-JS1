@@ -13,7 +13,7 @@ project 1 - A Random Quote Generator
 
 const quotes = [
   {quote: 'The only way to do great work is to love what you do.', source: 'Steve Jobs',citation: 'Stanford University Commencement Address'},
-  {quote: 'The best time to plant a tree was 20 years ago. The second best time is now.', source: 'Chinese Proverb'},
+  {quote: 'The best time to plant a tree was 20 years ago. The second best time is now.', source: 'Chinese Proverb', tag: 'Inspirational'},
   {quote: 'The best revenge is massive success.', source: 'Frank Sinatra', year: '1915-1998'},
   {quote: 'The only limit to our realization of tomorrow will be our doubts of today.', source: 'Franklin D. Roosevelt'},
   {quote: 'The only thing we have to fear is fear itself.', source: 'Franklin D. Roosevelt'}
@@ -33,15 +33,20 @@ function getRandomQuote(){
 ***/
 function printQuote(){
 let randomQuote = getRandomQuote();
+let randomColor = Math.floor(Math.random() * 256);       //* random color generator *//
 let html = `<p class="quote">${randomQuote.quote}</p>
             <p class="source">${randomQuote.source}`
             if(randomQuote.citation){
              html += `<span class="citation">${randomQuote.citation}</span>`;
             }
+            if(randomQuote.tag){
+              html += ` <span class="tag">${randomQuote.tag}</span>`;
+            }
             if(randomQuote.year){
               html += `<span class="year">${randomQuote.year}</span>`;
             }
             `</p>`;
+document.querySelector('body').style.backgroundColor = `rgba(${randomColor}, ${randomColor}, ${randomColor}`;      
 document.getElementById('quote-box').innerHTML = html;
 
 }
